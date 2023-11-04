@@ -40,5 +40,16 @@ router.delete('/', (_req, res) => {
     return res.json({ message: 'success' });
   }
 );
+// Restore User
+router.get('/', (req, res) => {
+    const { user } = req;
+    if (user) {
+      const safeUser = {id, email, username} = user;
+      return res.json({ user: safeUser });
+    } else {
+      return res.json({ user: null });
+    }
+  }
+);
 
 module.exports = router;
