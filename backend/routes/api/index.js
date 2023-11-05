@@ -2,6 +2,10 @@ const router = require('express').Router();
 const { User } = require('../../db/models');
 const usersRouter = require('./users.js');
 const sessionRouter = require('./session.js');
+const serverRouter = require('./servers.js');
+const channelRouter = require('./channels.js');
+const messageRouter = require('./messages.js');
+
 const {
   requireAuth,
   restoreUser,
@@ -11,6 +15,9 @@ const {
 router.use(restoreUser);
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/servers', serverRouter);
+router.use('/channels', channelRouter);
+router.use('/messages', messageRouter);
 
 // Add a XSRF-TOKEN cookie
 router.get("/csrf/restore", (req, res) => {
