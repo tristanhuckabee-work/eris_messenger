@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as serverActions from "../../store/servers";
+import {getImageURL, getServerURL} from "./utils";
 import './serverBar.css';
 
 function ServerModal() {
@@ -16,6 +17,12 @@ function ServerModal() {
 
   const submitServer = (e) => {
     e.preventDefault()
+    const newServer = {
+      name: serverName,
+      image : getImageURL(imageURL, image),
+      invite_url: getServerURL(sessionUser.username, serverName)
+    }
+    console.log(newServer);
     return;
   }
 
@@ -28,7 +35,7 @@ function ServerModal() {
             <span>Server Name</span>
             <span className='errors'>{errors.username && <span className="errors">{errors.name}</span>}</span>
           </div>
-          
+
           <input
             type="text"
             value={serverName}
@@ -46,7 +53,6 @@ function ServerModal() {
             type="text"
             value={imageURL}
             onChange={(e) => setImageURL(e.target.value)}
-            required
           />
         </label>
         or
@@ -60,7 +66,6 @@ function ServerModal() {
             type="text"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-            required
           />
         </label>
         <button type='submit'>Create Server</button>
