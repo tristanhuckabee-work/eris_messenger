@@ -1,0 +1,11 @@
+#splashPage {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px 20%;
+}
+#splashPage section {
+  width: 100%;
+}

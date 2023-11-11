@@ -4,7 +4,7 @@
   height: 100vh;
   justify-content: center;
   width: 100vw;
-  background-color: #00000088;
+  background-color: #00000066;
 }
 .login-container {
   align-items: center;
@@ -46,7 +46,7 @@
   padding: 5px;
   width: 100%;
 }
-#login button {
+#login button[type] {
   background-color: #fc466b;
   background-image: linear-gradient(45deg, #3f5efb 0%, #fc466b 100%);
   border: none;
@@ -58,11 +58,26 @@
   transition: 0.5s linear all;
   width: 100%;
 }
-#login button:hover {
+#login button[type]:hover {
   background-color: #3f5efb;
   background-image: linear-gradient(45deg, #3f90fb 0%, #fc4692 100%);
   cursor: pointer;
 }
 span.errors {
   color: #fc466b;
+}
+.demo-button {
+  background-color: #333333;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: white;
+  font-weight: bold;
+  height: 2em;
+  transition: 0.5s linear all;
+  width: 100%;
+}
+.demo-button:hover {
+  background-color: #444444;
+  cursor: pointer;
 }

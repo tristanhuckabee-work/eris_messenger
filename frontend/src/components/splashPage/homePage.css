@@ -1,0 +1,10 @@
+#homePage {
+  align-items: center;
+  color: white;
+  display: flex;
+  height: calc(100vh - 50px);
+  justify-content: flex-start;
+}
+#homePage section {
+  width: 100%;
+}

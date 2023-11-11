@@ -23,6 +23,20 @@ function LoginFormPage() {
       }
     );
   };
+  const submitAsDemoUser = (e) => {
+    e.preventDefault();
+    setErrors({});
+    const demoUser = {
+      credential: 'yung-demo',
+      password: 'password'
+    }
+    return dispatch(sessionActions.login(demoUser)).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    )
+  }
 
   return (
     <div id='login'>
@@ -55,6 +69,7 @@ function LoginFormPage() {
             />
           </label>
           <button type="submit">Log In</button>
+          <button className='demo-button' onClick={submitAsDemoUser}>Log In as Demo User</button>
         </form>
       </div>
     </div>

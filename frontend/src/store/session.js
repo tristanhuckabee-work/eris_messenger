@@ -4,10 +4,10 @@ const SET_USER = "session/login";
 const REMOVE_USER = "session/logout";
 
 const setUser = (payload) => {
-  return {type: SET_USER, payload};
+  return { type: SET_USER, payload };
 };
 const removeUser = () => {
-  return {type: REMOVE_USER};
+  return { type: REMOVE_USER };
 };
 
 export const login = (user) => async (dispatch) => {
@@ -18,6 +18,13 @@ export const login = (user) => async (dispatch) => {
   });
   const data = await response.json();
   dispatch(setUser(data.user));
+  return response;
+};
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch('/api/session', {
+    method: 'DELETE',
+  });
+  dispatch(removeUser());
   return response;
 };
 export const signup = (user) => async (dispatch) => {
@@ -42,6 +49,7 @@ export const restoreUser = () => async (dispatch) => {
   dispatch(setUser(data.user));
   return response;
 };
+
 
 const sessionReducer = (state = {}, action) => {
   let newState;
